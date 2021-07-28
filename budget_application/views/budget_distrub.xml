@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="budget_distrubition_form" model="ir.ui.view">
+        <field name="name">budget.distrubition.form</field>
+        <field name="model">budget.distrubition</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Entrer le Nom"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="amount"/>
+                        </group>
+                        <group>
+                            <field name="date_previ"/>
+                            <field name="date_reel"/>
+                            <field name="budget_id"  invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="budget_distrubition_tree" model="ir.ui.view">
+        <field name="name">budget.distrubition.tree</field>
+        <field name="model">budget.distrubition</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name ="name" />
+                <field name="amount"/>
+                <field name="date_previ"/>
+                <field name="date_reel"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="budget_distrubition_action" model="ir.actions.act_window">
+        <field name="name">Tranches</field>
+        <field name="res_model">budget.distrubition</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouveau Tranches budgétaire !
+            </p>
+            <p>
+                Définir un nouveau Tranches budgétaire
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>

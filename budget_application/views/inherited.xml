@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- inherited project form view   -->
+    <data> 
+        <record model="ir.ui.view" id="project_inherited_form">
+            <field name="name">project.inherited.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='attachment_tree_view']" position="after">
+                    <button class="oe_stat_button" type="object" name="project_budget" icon="fa-dollar" 
+                        string="Budget" context="{'default_project_id':active_id}" >
+                        <!--  -->
+                    </button>
+                </xpath>
+                <xpath expr="//page[@name='settings']" position="after">
+                    <page string="Purchase Request">
+                        <field name="purchase_request"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+    <!-- inherited task form view    -->
+
+    <data>
+        <record model="ir.ui.view" id="inherited_task_form">
+            <field name="name">inherited.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='toggle_active']" position="before">
+                    <button class="oe_stat_button" type="object" name="task_budget" icon="fa-dollar" 
+                        string="Budget" context="{'default_task_id':active_id}" >
+                    </button>
+                </xpath>
+                <xpath expr="//page[@name='extra_info']" position="after">
+                    <page string="Purchase Request">
+                        <field name="purchase_request"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+
+    <!-- inherited purchase equest form -->
+
+    <data>
+        <record model="ir.ui.view" id="inherited_purchase_request_form">
+            <field name="name">inherited.purchase.request.form</field>
+            <field name="model">purchase.request</field>
+            <field name="inherit_id" ref="purchase_request.view_purchase_request_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='group_id']" position="after">
+                    <field name="postes_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+
+
+</odoo>

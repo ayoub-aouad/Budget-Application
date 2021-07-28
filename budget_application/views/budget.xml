@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- this is the form view of mu budget model  -->
+    <record id="budget_form_view" model="ir.ui.view">
+        <field name="name">budget</field>
+        <field name="model">budget.budget</field>
+        <field name="arch" type="xml">
+            <form string="Budget">
+                
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="budget_theori"/>
+                            <field name="budget_selection"/>
+                        </group>
+                        <group>
+                            <field name="budget_previ"/>
+                            <field name="budget_reel"/>
+                            <field name="project_id" invisible="1"/>
+                            <field name="task_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Postes budgétaires">
+                            <field name="post_ids" context="{'default_budget_id':active_id}"/>
+                        </page>
+                        <page string="Tranches budgétaires" >
+                            <field name="tranches_ids" context="{'default_budget_id':active_id}" attrs="{'invisible':[('budget_selection','=','total')]}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- This is the Tree View of my budget model -->
+    <record id="budget_tree_view" model="ir.ui.view">
+        <field name="name">budget</field>
+        <field name="model">budget.budget</field>
+        <field name="arch" type="xml">
+            <tree string="Budget">
+                <field name="name"/>
+                <field name="budget_theori"/>
+                <field name="budget_selection"/>
+                <field name="budget_previ"/>
+                <field name="budget_reel"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- This is the Action View of my Budget Model -->
+    <record id="budget_action" model="ir.actions.act_window">
+        <field name="name">Budget</field>
+        <field name="res_model">budget.budget</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouveau Budget pour le Projet !
+            </p>
+            <p>
+                Définir un nouveau Budget
+            </p>
+        </field>
+    </record>
+
+    
+</odoo>

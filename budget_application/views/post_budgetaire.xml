@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="post_budget_form" model="ir.ui.view">
+        <field name="name">post_budget_form</field>
+        <field name="model">budget.post</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="budget_theori"/>
+                            <field name="budget_porcentage"/>
+                        </group>
+                        <group>
+                            <field name="budget_previ"/>
+                            <field name="budget_reel"/>
+                            <field name="budget_id"  invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Purchase Request">
+                            <field name="purchase_request" context="{'default_postes_id':active_id}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="budget_post_tree" model="ir.ui.view">
+        <field name="name">budget.post.tree</field>
+        <field name="model">budget.post</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+                <field name="budget_theori"/>
+                <field name="budget_porcentage"/>
+                <field name="budget_previ"/>
+                <field name="budget_reel"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="post_budget_action_window" model="ir.actions.act_window">
+        <field name="name">Postes budgétaires</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">budget.post</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouveau poste budgétaire !
+            </p>
+            <p>
+                Définir un nouveau poste budgétaire
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>

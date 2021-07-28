@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- This test Menu -->
+    <menuitem
+        id="budget_menu"
+        name="Budget"
+        sequence="2"/>
+
+    <menuitem
+    id="budget_menu_item"
+    name="Budget"
+    action="budget_action"
+    parent='budget_menu'
+    sequence="2"/>
+
+    
+
+
+</odoo>
